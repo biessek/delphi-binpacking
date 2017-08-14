@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{4437A6CF-2D92-4B67-8B2C-9FDC65356E7B}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="BinPacking.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Test\BinPackingTests.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="BinPacking">
+        <MSBuild Projects="BinPacking.dproj"/>
+    </Target>
+    <Target Name="BinPacking:Clean">
+        <MSBuild Projects="BinPacking.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BinPacking:Make">
+        <MSBuild Projects="BinPacking.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="BinPackingTests">
+        <MSBuild Projects="Test\BinPackingTests.dproj"/>
+    </Target>
+    <Target Name="BinPackingTests:Clean">
+        <MSBuild Projects="Test\BinPackingTests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BinPackingTests:Make">
+        <MSBuild Projects="Test\BinPackingTests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="BinPacking;BinPackingTests"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="BinPacking:Clean;BinPackingTests:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="BinPacking:Make;BinPackingTests:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

@@ -1,4 +1,4 @@
-package binpacking;
+package BinPacking;
 
 {$R *.res}
 {$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
@@ -30,5 +30,8 @@ package binpacking;
 
 requires
   rtl;
+
+contains
+  BinPacking.MaxRectsBinPack in 'Source\BinPacking.MaxRectsBinPack.pas';
 
 end.
